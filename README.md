@@ -1,6 +1,6 @@
 # allclose
 
-Compare numbers, arrays, or nested arrays for equality up to some tolerance. checks both shapes and values. Uses [almost-equal](https://github.com/scijs/almost-equal) and is a more general form of [array-almost-equal](https://github.com/Jam3/array-almost-equal).
+Compare numbers, arrays, or nested arrays for equality up to some tolerance. Checks both shapes and values. Uses [almost-equal](https://github.com/scijs/almost-equal) and is a more general form of [array-almost-equal](https://github.com/Jam3/array-almost-equal).
 
 # install
 
