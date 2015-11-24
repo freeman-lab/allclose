@@ -16,7 +16,7 @@ npm install allclose
 
 returns a function `close(array1, array2)` that, when called on two arrays, will execute tests using the test instance `t`
 
-#### examples
+# examples
 
 setup tests using `tape` as usual
 
@@ -55,9 +55,9 @@ and you can optionally specify a tolerance
 
 ```javascript
 allclose(t)(1, 1.1)
-> test failure
+> test passes
 allclose(t, 0.3)(1, 1.1)
-> true
+> test fails
 ```
 
 
