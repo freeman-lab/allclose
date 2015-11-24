@@ -31,26 +31,26 @@ allclose(1, 2)
 or arrays
 
 ```javascript
-allclose([1, 2], [3, 4])
+allclose([1, 2], [1, 2])
 > true
 
-allclose([1, 2], [3, 4, 5])
+allclose([1, 2], [1, 2, 3])
 > false
 
-allclose([1, 2], [3, 6])
+allclose([1, 2], [1, 3])
 > false
 ```
 
 or nested arrays
 
 ```javascript
-allclose([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+allclose([[1, 2], [3, 4]], [[1, 2], [3, 4]])
 > true
 
-allclose([[1, 2], [3, 4]], [[5, 6], [7, 9]])
+allclose([[1, 2], [3, 4]], [[1, 2], [3, 4], [5, 6]])
 > false
 
-allclose([[1, 2], [3, 4]], [[5, 6], [7, 8], [9, 10]])
+allclose([[1, 2], [3, 4]], [[1, 2], [3, 5]])
 > false
 ```
 
