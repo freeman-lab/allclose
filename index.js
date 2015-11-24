@@ -1,37 +1,29 @@
 var _ = require('lodash')
-var almost = require('array-almost-equal')
-var FLT_EPSILON = require('almost-equal').FLT_EPSILON
+var almost = require('almost-equal')
 
 module.exports = function allclose(t, atol, rtol) {
-    if (typeof atol !== 'number') atol = FLT_EPSILON
+  var msg
+  if (_.isNumber(atol)) {
+    msg = 'should have the same values (up to ' + atol + ')'
+  } else {
+    atol = almost.FLT_EPSILON
+    msg = 'should have the same values'
+  }
 
-    function compare(bool, value, expected, msg) {
-        msg = msg || 'should '+ (bool ? '' : 'not') + ' be almost equivalent'
-        // if expected is a number
-        // if expected is an array
-            // check if length matches
-        // if expected is a nested array
-            // check if dimensions match
-        // if any failure here, return msg 'shapes should match'
-        //      // and return equality on the dimensions
-        // otherwise
-        // flatten the array and do the almost
-        return almost(_.flatten(value), _.flatten(expected), atol, rtol) === bool
-            ? t.ok(true, msg) 
-            : t.equal(fix(value, atol), expected, msg)
-    }
+  function shape(a) {
+    if (_.isNumber(a)) return 1
+    if (_.isArray(a) && _.isArray(a[0])) return[a.length, a[0].length]
+    if (_.isArray(a)) return a.length
+    return 0
+  }
 
-    var fuzzy = compare.bind(null, true)
-    fuzzy.not = compare.bind(null, false)
-    return fuzzy
-}
-
-function fix(array, eps) {
-    var m = 1 / eps
-    return Array.prototype.slice.call(array).map(function(e) {
-        if (typeof e === 'number') 
-            return Math.round(e * m) / m
-        else
-            return e
+  return function(a, b) {
+    t.deepEqual(shape(a), shape(b), 'should have the same shape')
+    var checks = _.zip(_.flattenDeep([a]), _.flattenDeep([b])).map(function (d) {
+      return almost(d[0], d[1], atol, rtol)
     })
+    if (_.all(checks)) return t.ok(true, msg)
+    return t.equal(a, b, msg)
+  }
+
 }
