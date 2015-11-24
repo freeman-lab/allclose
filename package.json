@@ -1,0 +1,31 @@
+{
+  "name": "allclose",
+  "version": "1.0.0",
+  "description": "tape utility to compare arrays or nested arrays",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freeman-lab/allclose.git"
+  },
+  "keywords": [
+    "tape",
+    "tap",
+    "test",
+    "array",
+    "ndarray",
+    "float",
+    "number"
+  ],
+  "author": "Jeremy Freeman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freeman-lab/allclose/issues"
+  },
+  "homepage": "https://github.com/freeman-lab/allclose#readme",
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
+}
