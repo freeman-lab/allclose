@@ -2,6 +2,8 @@
 
 Compare numbers, arrays, or nested arrays for equality up to some tolerance. Checks both shapes and values. Uses [almost-equal](https://github.com/scijs/almost-equal) and generalizes [array-almost-equal](https://github.com/Jam3/array-almost-equal). Useful when working with lists of coordinates and other numerical data.
 
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 # install
 
 use npm
