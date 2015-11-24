@@ -1,7 +1,7 @@
 {
   "name": "allclose",
   "version": "1.0.0",
-  "description": "tape utility to compare numerical arrays",
+  "description": "compare numerical arrays",
   "main": "index.js",
   "scripts": {
     "tape": "tape test.js | tap-spec",

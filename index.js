@@ -1,14 +1,9 @@
 var _ = require('lodash')
 var almost = require('almost-equal')
 
-module.exports = function allclose(t, atol, rtol) {
-  var msg
-  if (_.isNumber(atol)) {
-    msg = 'should have the same values (up to ' + atol + ')'
-  } else {
-    atol = almost.FLT_EPSILON
-    msg = 'should have the same values'
-  }
+module.exports = function allclose(a, b, atol, rtol) {
+  if (!_.isNumber(atol)) atol = almost.FLT_EPSILON
+  if (!_.isNumber(rtol)) rtol = 0
 
   function shape(a) {
     if (_.isNumber(a)) return 1
@@ -17,13 +12,11 @@ module.exports = function allclose(t, atol, rtol) {
     return 0
   }
 
-  return function(a, b) {
-    t.deepEqual(shape(a), shape(b), 'should have the same shape')
-    var checks = _.zip(_.flattenDeep([a]), _.flattenDeep([b])).map(function (d) {
-      return almost(d[0], d[1], atol, rtol)
-    })
-    if (_.all(checks)) return t.ok(true, msg)
-    return t.equal(a, b, msg)
-  }
+  var sameshape = _.isEqual(shape(a), shape(b))
+  var pairs = _.zip(_.flattenDeep([a]), _.flattenDeep([b]))
+  var samevalues = pairs.map(function (d) {
+    return almost(d[0], d[1], atol, rtol)
+  })
 
+  return sameshape && _.all(samevalues)
 }

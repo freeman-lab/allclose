@@ -1,6 +1,6 @@
 # allclose
 
-utility for [tape]() to compare numbers, arrays, or nested arrays up to some tolerance, with sensible error output on test failure. uses [almost-equal](https://github.com/scijs/almost-equal) and inspired by [test-fuzzy-array](https://github.com/Jam3/test-fuzzy-array).
+compare numbers, arrays, or nested arrays for equality up to some tolerance. checks both shapes and values.
 
 # install
 
@@ -12,52 +12,56 @@ npm install allclose
 
 # usage
 
-#### `close = allclose(t, [atol], [rtol])`
+#### `allclose(a, b, [atol], [rtol])`
 
-returns a function `close(array1, array2)` that, when called on two arrays, will execute tests using the test instance `t`
+requires two numbers / arrays / nested arrays `a` and `b`, and optionally an absolute tolerance `atol` and a relative tolerance `rtol`. returns `true` if `a` and `b` have the same shape and value, and `false` otherwise.
 
 # examples
-
-setup tests using `tape` as usual
-
-```javascript
-var test = require('tape')
-```
-
-then inside a test call 
-
-```javascript
-test('arrays', function (t) {
-  allclose(t)([1, 2], [1, 3])
-  t.end()
-})
-```
 
 you can test numbers
 
 ```javascript
-allclose(t)(1, 2)
+allclose(1, 1)
+> true
+
+allclose(1, 2)
+> false
 ```
 
 or arrays
 
 ```javascript
-allclose(t)([1, 2], [1, 3])
+allclose([1, 2], [3, 4])
+> true
+
+allclose([1, 2], [3, 4, 5])
+> false
+
+allclose([1, 2], [3, 6])
+> false
 ```
 
 or nested arrays
 
 ```javascript
-allclose(t)([[1, 2], [3, 4]], [[1, 2], [3, 5]])
+allclose([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+> true
+
+allclose([[1, 2], [3, 4]], [[5, 6], [7, 9]])
+> false
+
+allclose([[1, 2], [3, 4]], [[5, 6], [7, 8], [9, 10]])
+> false
 ```
 
 and you can optionally specify a tolerance
 
 ```javascript
-allclose(t)(1, 1.1)
-> test passes
-allclose(t, 0.3)(1, 1.1)
-> test fails
+allclose([1, 2], [1, 2.1])
+> false
+
+allclose([1, 2], [1, 2.1], 0.2)
+> true
 ```
 
 
