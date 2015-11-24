@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tape": "tape test.js | tap-spec",
-    "test": "npm run tape"
+    "test": "standard & npm run tape"
   },
   "repository": {
     "type": "git",
