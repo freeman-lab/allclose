@@ -1,10 +1,11 @@
 {
   "name": "allclose",
   "version": "1.0.0",
-  "description": "tape utility to compare arrays or nested arrays",
+  "description": "tape utility to compare numerical arrays",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tape": "tape test.js | tap-spec",
+    "test": "npm run tape"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,12 @@
   },
   "homepage": "https://github.com/freeman-lab/allclose#readme",
   "dependencies": {
+    "almost-equal": "^1.0.0",
     "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "standard": "^5.4.1",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.2"
   }
 }
