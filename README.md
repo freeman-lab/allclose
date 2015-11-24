@@ -1,6 +1,6 @@
 # allclose
 
-compare numbers, arrays, or nested arrays for equality up to some tolerance. checks both shapes and values.
+Compare numbers, arrays, or nested arrays for equality up to some tolerance. checks both shapes and values. Uses [almost-equal](https://github.com/scijs/almost-equal) and is a more general form of [array-almost-equal](https://github.com/Jam3/array-almost-equal).
 
 # install
 
@@ -14,7 +14,7 @@ npm install allclose
 
 #### `allclose(a, b, [atol], [rtol])`
 
-requires two numbers / arrays / nested arrays `a` and `b`, and optionally an absolute tolerance `atol` and a relative tolerance `rtol`. returns `true` if `a` and `b` have the same shape and value, and `false` otherwise.
+requires two numbers or arrays or nested arrays `a` and `b`, and optionally an absolute tolerance `atol` and a relative tolerance `rtol`. returns `true` if `a` and `b` have the same shape and value, and `false` otherwise.
 
 # examples
 
