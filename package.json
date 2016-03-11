@@ -28,7 +28,11 @@
   "homepage": "https://github.com/freeman-lab/allclose#readme",
   "dependencies": {
     "almost-equal": "^1.0.0",
-    "lodash": "^3.10.1"
+    "lodash.flattendeep": "^4.1.0",
+    "lodash.isarray": "^4.0.0",
+    "lodash.isequal": "^4.1.1",
+    "lodash.isnumber": "^3.0.3",
+    "lodash.zip": "^4.0.0"
   },
   "devDependencies": {
     "standard": "^5.4.1",
