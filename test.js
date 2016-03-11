@@ -62,3 +62,12 @@ test('mixed array', function (t) {
   t.notok(allclose(['a', 1], ['a', 2]), notmsg)
   t.end()
 })
+
+test('typed array', function (t) {
+  t.ok(allclose(new Float32Array([0, 1]), new Float32Array([0, 1])), msg)
+  t.ok(allclose(new Uint8Array([0, 1]), new Uint8Array([0, 1])), msg)
+  t.notok(allclose(new Float32Array([0, 1]), new Float32Array([0, 0])), notmsg)
+  t.notok(allclose(new Uint8Array([0, 1]), new Uint8Array([0, 0])), notmsg)
+  t.end()
+})
+
